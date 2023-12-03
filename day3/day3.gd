@@ -21,8 +21,8 @@ func part_one():
 					numbers.append({
 							"number": int(current_number),
 							"line": y,
-							"row_start": x - len(current_number),
-							"row_end": x - 1,
+							"column_start": x - len(current_number),
+							"column_end": x - 1,
 							"is_part_number": false,
 						})
 					current_number = ""
@@ -32,7 +32,7 @@ func part_one():
 			if contents[y][x] not in "0123456789.":
 				for number in numbers:
 					if y in range(number["line"] - 1, number["line"] + 2):
-						if x in range(number["row_start"] - 1, number["row_end"] + 2):
+						if x in range(number["column_start"] - 1, number["column_end"] + 2):
 							number["is_part_number"] = true
 
 	for number in numbers:
@@ -58,8 +58,8 @@ func part_two():
 					numbers.append({
 							"number": int(current_number),
 							"line": y,
-							"row_start": x - len(current_number),
-							"row_end": x - 1,
+							"column_start": x - len(current_number),
+							"column_end": x - 1,
 						})
 					current_number = ""
 	
@@ -69,7 +69,7 @@ func part_two():
 				var neighbors: = []
 				for number in numbers:
 					if y in range(number["line"] - 1, number["line"] + 2):
-						if x in range(number["row_start"] - 1, number["row_end"] + 2):
+						if x in range(number["column_start"] - 1, number["column_end"] + 2):
 							neighbors.append(number["number"])
 				if len(neighbors) == 2:
 					result += neighbors[0] * neighbors[1]
