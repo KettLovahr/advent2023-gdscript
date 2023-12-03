@@ -5,5 +5,3 @@ To use these scripts, simply open up a terminal and run:
 ```sh
 <godot-executable> --headless -s <script-path>
 ```
-
-^-^
