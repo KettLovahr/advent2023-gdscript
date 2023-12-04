@@ -5,7 +5,7 @@ func _initialize():
 	part_two()
 
 func part_one():
-	var file = FileAccess.open("input", FileAccess.READ)
+	var file = FileAccess.open("./input", FileAccess.READ)
 	var contents = file.get_as_text(true).split("\n")
 
 	var values: Array = []
