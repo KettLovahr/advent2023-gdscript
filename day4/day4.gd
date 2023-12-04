@@ -27,14 +27,14 @@ func part_one():
 func part_two():
 	var file = FileAccess.open("./input", FileAccess.READ)
 	var contents = Array(file.get_as_text(true).trim_suffix("\n").split("\n"))
+	var cards: int = 0
 	var cache: Dictionary = {}
 	var card_db: Dictionary = {}
 
 	for line in contents:
 		var card_id: String = line.split(":")[0].trim_prefix("Card ").strip_edges()
 		var prize_nums: Array = Array(line.split(": ")[1].split(" | ")[0].split(" ")).filter(func(a): return a != "")
-		var card_nums: Array = Array(line.split(": ")[1].split(" | ")[1].split(" ")).filter(func(a): return a != "")
-
+		var card_nums:  Array = Array(line.split(": ")[1].split(" | ")[1].split(" ")).filter(func(a): return a != "")
 		var copies: int = 0
 
 		for num in card_nums:
@@ -44,19 +44,12 @@ func part_two():
 		cache[card_id] = copies
 		card_db[card_id] = 1
 
-	var cards: int = 0
-
 	for line in contents:
-		var copies: int = 0
-
 		var card_id: String = line.split(":")[0].trim_prefix("Card ").strip_edges()
-
-		copies = cache[card_id]
-
-		var cards_to_copy: Array = range(int(card_id) + 1, int(card_id) + copies + 1)
+		var cards_to_copy: Array = range(int(card_id) + 1, int(card_id) + cache[card_id] + 1)
 
 		for card in cards_to_copy:
-			card_db[str(card)] += 1 * card_db[card_id]
+			card_db[str(card)] += card_db[card_id]
 
 	for card in card_db:
 		cards += card_db[card]
