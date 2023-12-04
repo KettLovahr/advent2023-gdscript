@@ -21,7 +21,6 @@ func part_one():
 				score = score * 2 if score > 0 else 1
 
 		result += score
-		print("%s: %s points" % [line.split(":")[0], score])
 
 	print(result)
 
