@@ -1,7 +1,7 @@
 extends MainLoop
 
 func _initialize():
-	# part_one()
+	part_one()
 	part_two()
 
 func part_one():
