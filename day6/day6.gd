@@ -30,16 +30,14 @@ func part_two():
 	
 	var time = int(contents[0].trim_prefix("Time: ").replace(" ", ""))
 	var distance = int(contents[1].trim_prefix("Distance: ").replace(" ", ""))
-	var winstrats := []
+	var result: int
 
 	var ways_to_win := 0
 	for j in range(time):
 		var dist = (time - j) * j
 		if dist > distance:
-			ways_to_win += 1
-	winstrats.append(ways_to_win)
+			result += 1
 
-	var result = winstrats.reduce(func(accum, item): return accum * item)
 	print(result)
 
 func _process(_delta):
