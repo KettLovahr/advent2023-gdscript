@@ -4,6 +4,14 @@ func _initialize():
 	part_one()
 	part_two()
 
+func lcm(x: int, y: int):
+	var mcd: int = -1
+	for i in range(min(x, y), 0, -1):
+		if x % i == 0 and y % i == 0:
+			mcd = i
+			break
+	return (x * y) / mcd
+
 func part_one():
 	var file = FileAccess.open("./input", FileAccess.READ)
 	var contents = Array(file.get_as_text(true).trim_suffix("\n").split("\n"))
@@ -58,11 +66,9 @@ func part_two():
 			if done == len(cursors): break
 		if done == len(cursors): break
 
-	print(steps)
+	var result = steps.reduce(func(a,v): return lcm(a, v))
+	print(result)
 
-	# And it is at this moment that I just go to an external tool 
-	# to get the least common multiple 
-	# idk how to write code for that
 
 func _process(_delta):
 	return 1
