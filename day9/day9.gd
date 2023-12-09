@@ -23,10 +23,6 @@ func part_one():
 
 	print(result)
 
-
-				
-
-
 func part_two():
 	var file = FileAccess.open("./input", FileAccess.READ)
 	var contents = file.get_as_text(true).trim_suffix("\n").split("\n")
