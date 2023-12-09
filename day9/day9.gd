@@ -13,7 +13,7 @@ func part_one():
 	for line in contents:
 		var xtrp: Array = []
 		xtrp.append(Array(line.split(" ")).map(func(a): return int(a)))
-		while not xtrp[-1].reduce(func(a, n): return a and n == 0, true):
+		while not xtrp[-1].all(func(n): return n == 0):
 			var current := []
 			for i in range(len(xtrp[-1]) - 1):
 				current.append(xtrp[-1][i+1] - xtrp[-1][i])
@@ -32,7 +32,7 @@ func part_two():
 	for line in contents:
 		var xtrp: Array = []
 		xtrp.append(Array(line.split(" ")).map(func(a): return int(a)))
-		while not xtrp[-1].reduce(func(a, n): return a and n == 0, true):
+		while not xtrp[-1].all(func(n): return n == 0):
 			var current := []
 			for i in range(len(xtrp[-1]) - 1):
 				current.append(xtrp[-1][i] - xtrp[-1][i+1])
